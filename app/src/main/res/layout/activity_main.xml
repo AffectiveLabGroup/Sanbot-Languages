@@ -24,25 +24,11 @@
             android:gravity="center"
             android:padding="16dp">
 
-            <ImageButton
-                android:id="@+id/feliz"
-                android:layout_margin="16dp"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:scaleType="centerInside"
-                android:contentDescription="feliz"
-                android:src="@drawable/feliz"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="16dp"
-                android:clickable="true"
-                />
-
-            <!-- Texto debajo del ImageButton -->
             <Button
-                android:id="@+id/btnFeliz"
+                android:id="@+id/asociacionimagenpalabra"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Felicidad"
+                android:text="Asociación imagen-palabra"
                 android:background="@drawable/button_rounded"
                 android:textColor="@color/colorWhite"
                 android:textAllCaps="false"
@@ -61,24 +47,11 @@
             android:gravity="center"
             android:padding="16dp">
 
-            <ImageButton
-                android:id="@+id/sonrojado"
-                android:layout_margin="16dp"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:scaleType="centerInside"
-                android:contentDescription="sonrojado"
-                android:src="@drawable/sonrojado"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="16dp"
-                />
-
-            <!-- Texto debajo del ImageButton -->
             <Button
-                android:id="@+id/btnSonrojado"
+                android:id="@+id/agenda"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Vergüenza"
+                android:text="Mi Agenda"
                 android:background="@drawable/button_rounded"
                 android:textColor="@color/colorWhite"
                 android:textAllCaps="false"
@@ -96,24 +69,11 @@
             android:gravity="center"
             android:padding="16dp">
 
-            <ImageButton
-                android:id="@+id/triste"
-                android:layout_margin="16dp"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:scaleType="centerInside"
-                android:contentDescription="triste"
-                android:src="@drawable/triste"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="16dp"
-                />
-
-            <!-- Texto debajo del ImageButton -->
             <Button
-                android:id="@+id/btnTriste"
+                android:id="@+id/colores"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Tristeza"
+                android:text="Colores"
                 android:background="@drawable/button_rounded"
                 android:textColor="@color/colorWhite"
                 android:textAllCaps="false"
@@ -122,193 +82,9 @@
                 android:gravity="center"/>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="16dp">
-
-            <ImageButton
-                android:id="@+id/preocupado"
-                android:layout_margin="16dp"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:scaleType="centerInside"
-                android:contentDescription="ansioso"
-                android:src="@drawable/ansioso"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="16dp"
-                />
-
-            <!-- Texto debajo del ImageButton -->
-            <Button
-                android:id="@+id/btnPreocupado"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="Preocupación"
-                android:background="@drawable/button_rounded"
-                android:textColor="@color/colorWhite"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:gravity="center"/>
-
-        </LinearLayout>
-
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="16dp">
-
-            <ImageButton
-                android:id="@+id/enfadado"
-                android:layout_margin="16dp"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:scaleType="centerInside"
-                android:contentDescription="enfado"
-                android:src="@drawable/enfadado"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="16dp"
-                android:clickable="true"
-                />
-
-            <!-- Texto debajo del ImageButton -->
-            <Button
-                android:id="@+id/btnEnfadado"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="Ira"
-                android:background="@drawable/button_rounded"
-                android:textColor="@color/colorWhite"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:clickable="true"
-                android:gravity="center"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="16dp">
-
-            <ImageButton
-                android:id="@+id/enamorado"
-                android:layout_margin="16dp"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:scaleType="centerInside"
-                android:contentDescription="enamorado"
-                android:src="@drawable/enamorado"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="16dp"
-                />
-
-            <!-- Texto debajo del ImageButton -->
-            <Button
-                android:id="@+id/btnEnamorado"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="Amor"
-                android:background="@drawable/button_rounded"
-                android:textColor="@color/colorWhite"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:gravity="center"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="16dp">
-
-            <ImageButton
-                android:id="@+id/curioso"
-                android:layout_margin="16dp"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:scaleType="centerInside"
-                android:contentDescription="curioso"
-                android:src="@drawable/guino"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="16dp"
-                />
-
-            <!-- Texto debajo del ImageButton -->
-            <Button
-                android:id="@+id/btnCurioso"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="Curiosidad"
-                android:background="@drawable/button_rounded"
-                android:textColor="@color/colorWhite"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:gravity="center"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="16dp">
-
-            <ImageButton
-                android:id="@+id/entusiasmado"
-                android:layout_margin="16dp"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:scaleType="centerInside"
-                android:contentDescription="entusiasmado"
-                android:src="@drawable/entusiasmado"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="16dp"
-                />
-
-            <!-- Texto debajo del ImageButton -->
-            <Button
-                android:id="@+id/btnEntusiasmado"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="Entusiasmo"
-                android:background="@drawable/button_rounded"
-                android:textColor="@color/colorWhite"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:gravity="center"/>
-
-        </LinearLayout>
-    </LinearLayout>
 
 
 

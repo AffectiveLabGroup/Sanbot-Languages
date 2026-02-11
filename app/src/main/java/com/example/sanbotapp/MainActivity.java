@@ -116,23 +116,9 @@ public class MainActivity extends TopBaseActivity {
 
         faceRecognitionControl = new FaceRecognitionControl(speechManager, mediaManager);
 
-        btnFeliz = findViewById(R.id.btnFeliz);
-        btnTriste = findViewById(R.id.btnTriste);
-        btnEnfadado = findViewById(R.id.btnEnfadado);
-        btnSonrojado = findViewById(R.id.btnSonrojado);
-        btnPreocupado = findViewById(R.id.btnPreocupado);
-        btnEnamorado = findViewById(R.id.btnEnamorado);
-        btnCurioso = findViewById(R.id.btnCurioso);
-        btnEntusiasmado = findViewById(R.id.btnEntusiasmado);
-
-        feliz = findViewById(R.id.feliz);
-        triste = findViewById(R.id.triste);
-        enfadado = findViewById(R.id.enfadado);
-        sonrojado = findViewById(R.id.sonrojado);
-        preocupado = findViewById(R.id.preocupado);
-        enamorado = findViewById(R.id.enamorado);
-        curioso = findViewById(R.id.curioso);
-        entusiasmado = findViewById(R.id.entusiasmado);
+        btnFeliz = findViewById(R.id.asociacionimagenpalabra);
+        btnTriste = findViewById(R.id.agenda);
+        btnEnfadado = findViewById(R.id.colores);
 
         faceRecognitionControl.stopFaceRecognition();
 
