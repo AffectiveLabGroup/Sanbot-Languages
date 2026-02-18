@@ -1,6 +1,8 @@
 package com.example.sanbotapp;
 
 
+import static android.app.PendingIntent.getActivity;
+
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -11,6 +13,7 @@ import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.util.LogWriter;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -54,6 +57,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.sql.Time;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -67,9 +71,9 @@ public class AsociacionimagenPalabraActivity extends TopBaseActivity {
     private Button btnAgenda;
     private Button btnColores;
 
-    private ImageButton feliz;
-    private ImageButton triste;
-    private ImageButton enfadado;
+    private ImageButton acierto;
+    private ImageButton fallo1;
+    private ImageButton fallo2;
     private FaceRecognitionControl faceRecognitionControl;
     private SpeechManager speechManager;
     private MediaManager mediaManager;
@@ -106,9 +110,9 @@ public class AsociacionimagenPalabraActivity extends TopBaseActivity {
         faceRecognitionControl = new FaceRecognitionControl(speechManager, mediaManager);
 
 
-        feliz = findViewById(R.id.imgasociacionimagenpalabra);
-        triste = findViewById(R.id.imgagenda);
-        enfadado = findViewById(R.id.imgcolores);
+        acierto = findViewById(R.id.imgasociacionimagenpalabra);
+        fallo1 = findViewById(R.id.imgagenda);
+        fallo2 = findViewById(R.id.imgcolores);
 
         faceRecognitionControl.stopFaceRecognition();
 
@@ -116,13 +120,10 @@ public class AsociacionimagenPalabraActivity extends TopBaseActivity {
     }
 
     public void setAllButtonsClickable(boolean clickable) {
-        btnAgenda.setClickable(clickable);
-        btnColores.setClickable(clickable);
-        btnAsociacion.setClickable(clickable);
 
-        triste.setClickable(clickable);
-        enfadado.setClickable(clickable);
-        feliz.setClickable(clickable);
+        fallo1.setClickable(clickable);
+        fallo2.setClickable(clickable);
+        acierto.setClickable(clickable);
     }
 
     public void setonClicks() {
@@ -131,10 +132,8 @@ public class AsociacionimagenPalabraActivity extends TopBaseActivity {
         speakOption.setSpeed(50);
         speakOption.setIntonation(50);
 
-        // TODO:
 
-
-        feliz.setOnClickListener(new View.OnClickListener() {
+        acierto.setOnClickListener(new View.OnClickListener() {
             private boolean isProcessing = false; // Bandera para evitar múltiples clics
 
             @Override
@@ -151,23 +150,39 @@ public class AsociacionimagenPalabraActivity extends TopBaseActivity {
                         Thread.sleep(100);
 
                         // Mostrar emoción y encender LEDs
-                        systemManager.showEmotion(EmotionsType.SMILE);
-                        hardwareManager.setLED(new LED(LED.PART_ALL, LED.MODE_YELLOW));
+                        systemManager.showEmotion(EmotionsType.PRISE);
+                        hardwareManager.setLED(new LED(LED.PART_ALL, LED.MODE_GREEN));
+
+                        AbsoluteAngleHandMotion absoluteAngleHandMotion =
+                                new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_BOTH,20,0);
+                        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
 
                         // Generar frases aleatorias
-                        /*String[] frases = {
-                                "Hoy estoy muy feliz, ¡Gracias por jugar conmigo!",
-                                "Estoy contenta de que estés aquí",
-                                "Estoy muy feliz de verte, espero que tú también lo estés"
+                        String[] frases = {
+                                "¡Tachán! Tu inteligencia brilla como un LED.",
+                                "¡Bien hecho! Tu cerebro está en modo lingüista.",
+                                "¡Increíble! Tu esfuerzo está dando frutos."
                         };
                         Random rand = new Random();
                         int randomIndex = rand.nextInt(frases.length);
-                        speechManager.startSpeak(frases[randomIndex], speakOption);*/
+                        speechManager.startSpeak(frases[randomIndex], speakOption);
+
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        absoluteAngleHandMotion =
+                                new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_BOTH,20,180);
+                        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
 
 
 
                         // Simula la duración de la frase
-                        Thread.sleep(5000);
+                        //Thread.sleep(5000);
+
+                        Thread.sleep(1000);
 
                         // Apagar luces
                         hardwareManager.setLED(new LED(LED.PART_ALL, LED.MODE_CLOSE));
@@ -187,7 +202,7 @@ public class AsociacionimagenPalabraActivity extends TopBaseActivity {
 
 
 
-        triste.setOnClickListener(new View.OnClickListener() {
+        fallo1.setOnClickListener(new View.OnClickListener() {
             private boolean isProcessing = false; // Bandera para evitar múltiples clics
 
             @Override
@@ -203,11 +218,14 @@ public class AsociacionimagenPalabraActivity extends TopBaseActivity {
                         // Simula un pequeño retraso inicial
                         Thread.sleep(100);
 
-                        systemManager.showEmotion(EmotionsType.CRY);
-                        hardwareManager.setLED(new LED(LED.PART_ALL, LED.MODE_BLUE));
+                        systemManager.showEmotion(EmotionsType.QUESTION);
+                        hardwareManager.setLED(new LED(LED.PART_ALL, LED.MODE_YELLOW));
 
-                        // saca frases aleatorias de tristeza rollo esto me pone triste, me siento triste, etc
-                        String[] frases = {"A veces me pongo muy triste, y no puedo parar de llorar", "Cuando me pongo trise, no puedo ocultarlo", "Me siento muy triste, no se como parar de llorar"};
+                        AbsoluteAngleHandMotion absoluteAngleHandMotion =
+                                new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_RIGHT,20,0);
+                        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+
+                        String[] frases = {"¡Atento! Te voy a dar una ayudita secreta.", "¡Activando modo pista! Prepárate.", "Bip bip… pista en camino."};
                         Random rand = new Random();
                         int randomIndex = rand.nextInt(frases.length);
                         speechManager.startSpeak(frases[randomIndex], speakOption);
@@ -217,10 +235,15 @@ public class AsociacionimagenPalabraActivity extends TopBaseActivity {
                         headMotionManager.doAbsoluteAngleMotion(absoluteAngleHeadMotion);
 
                         try {
-                            Thread.sleep(5000);
+                            Thread.sleep(3000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+
+                        absoluteAngleHandMotion =
+                                new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_RIGHT,20,180);
+                        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+                        Thread.sleep(1000);
 
                         // apagar luces
                         hardwareManager.setLED(new LED(LED.PART_ALL, LED.MODE_CLOSE));
@@ -239,7 +262,7 @@ public class AsociacionimagenPalabraActivity extends TopBaseActivity {
             }
         });
 
-        enfadado.setOnClickListener(new View.OnClickListener() {
+        fallo2.setOnClickListener(new View.OnClickListener() {
             private boolean isProcessing = false; // Bandera para evitar múltiples clics
 
             @Override
@@ -255,38 +278,36 @@ public class AsociacionimagenPalabraActivity extends TopBaseActivity {
                         // Simula un pequeño retraso inicial
                         Thread.sleep(100);
 
-                        systemManager.showEmotion(EmotionsType.ANGRY);
-                        hardwareManager.setLED(new LED(LED.PART_ALL, LED.MODE_RED));
+                        systemManager.showEmotion(EmotionsType.QUESTION);
+                        hardwareManager.setLED(new LED(LED.PART_ALL, LED.MODE_YELLOW));
 
-                        // saca frases aleatorias rollo cuando estoy enfadado me pongo muy nervioso, me enfada mucho, etc
-                        String[] frases = {"Cuando estoy enfadada me pongo muy nerviosa", "No me gusta estar enfadada, pero a veces no puedo evitarlo", "No puedo evitar enfadarme cuando sucede una injusticia"};
+                        AbsoluteAngleHandMotion absoluteAngleHandMotion =
+                                new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_RIGHT,20,0);
+                        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+
+                        String[] frases = {"¡Atento! Te voy a dar una ayudita secreta.", "¡Activando modo pista! Prepárate.", "Bip bip… pista en camino."};
                         Random rand = new Random();
                         int randomIndex = rand.nextInt(frases.length);
                         speechManager.startSpeak(frases[randomIndex], speakOption);
 
-                        AbsoluteAngleHandMotion absoluteAngleHandMotion =
-                                new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_BOTH,20,0);
-                        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+                        AbsoluteAngleHeadMotion absoluteAngleHeadMotion =
+                                new AbsoluteAngleHeadMotion(AbsoluteAngleHeadMotion.ACTION_VERTICAL,7);
+                        headMotionManager.doAbsoluteAngleMotion(absoluteAngleHeadMotion);
 
                         try {
-                            Thread.sleep(2000);
+                            Thread.sleep(3000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
 
                         absoluteAngleHandMotion =
-                                new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_BOTH,20,180);
+                                new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_RIGHT,20,180);
                         handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
-
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
+                        Thread.sleep(1000);
 
                         // apagar luces
                         hardwareManager.setLED(new LED(LED.PART_ALL, LED.MODE_CLOSE));
+                        headMotionManager.doAbsoluteAngleMotion(new AbsoluteAngleHeadMotion(AbsoluteAngleHeadMotion.ACTION_VERTICAL,30));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } finally {
@@ -340,6 +361,19 @@ public class AsociacionimagenPalabraActivity extends TopBaseActivity {
                 AbsoluteAngleHeadMotion absoluteAngleHeadMotion =
                         new AbsoluteAngleHeadMotion(AbsoluteAngleHeadMotion.ACTION_VERTICAL,7);
                 headMotionManager.doAbsoluteAngleMotion(absoluteAngleHeadMotion);
+                AbsoluteAngleHeadMotion absoluteAngleHeadMotion2 =
+                        new AbsoluteAngleHeadMotion(AbsoluteAngleHeadMotion.ACTION_VERTICAL,30);
+                headMotionManager.doAbsoluteAngleMotion(absoluteAngleHeadMotion2);
+
+                try {
+                    Thread.sleep(7000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                String frase2 = "La primera palabra es APPLE.";
+                speechManager.startSpeak(frase2, speakOption);
+
             }
         }, 200);
 

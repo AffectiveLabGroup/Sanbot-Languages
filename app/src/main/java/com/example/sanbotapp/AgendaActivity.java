@@ -18,6 +18,7 @@ import com.qihancloud.opensdk.function.beans.LED;
 import com.qihancloud.opensdk.function.beans.SpeakOption;
 import com.qihancloud.opensdk.function.beans.handmotion.AbsoluteAngleHandMotion;
 import com.qihancloud.opensdk.function.beans.headmotion.AbsoluteAngleHeadMotion;
+import com.qihancloud.opensdk.function.beans.wheelmotion.RelativeAngleWheelMotion;
 import com.qihancloud.opensdk.function.unit.HandMotionManager;
 import com.qihancloud.opensdk.function.unit.HardWareManager;
 import com.qihancloud.opensdk.function.unit.HeadMotionManager;
@@ -300,6 +301,9 @@ public class AgendaActivity extends TopBaseActivity {
                 Random rand = new Random();
                 int randomIndex = rand.nextInt(frases.length);
                 speechManager.startSpeak(frases[randomIndex], speakOption);
+
+                RelativeAngleWheelMotion movimientoRuedas = new RelativeAngleWheelMotion(RelativeAngleWheelMotion.TURN_LEFT, 5, 360);
+                wheelMotionManager.doRelativeAngleMotion(movimientoRuedas);
 
                 try {
                     Thread.sleep(2000);

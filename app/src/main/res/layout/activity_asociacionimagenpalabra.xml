@@ -5,22 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_vertical"
+    android:gravity="center"
     tools:context=".AsociacionimagenPalabraActivity">
 
     <!-- Título -->
     <TextView
-        android:id="@+id/titleText"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="RED"
+        android:text="ASOCIACIÓN IMAGEN - PALABRA"
+        android:textSize="60sp"
+        android:layout_margin="20dp"
+        android:textColor="@android:color/black"
         android:textAlignment="center"
-        android:textColor="@color/colorBlack"
-        android:textSize="30sp"
-        android:padding="30dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:gravity="center"
+        android:id="@+id/actividad"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="La palabra es: APPLE"
+        android:textSize="40sp"
+        android:layout_margin="20dp"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/apple"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selecciona la imagen correcta"
+        android:textSize="20sp"
+        android:layout_margin="20dp"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:id="@+id/informacion"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -43,7 +63,7 @@
                 android:layout_height="200dp"
                 android:scaleType="centerInside"
                 android:contentDescription="imgasociacionimagenpalabra"
-                android:src="@drawable/feliz"
+                android:src="@drawable/apple"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="16dp"
                 android:clickable="true"
@@ -68,7 +88,7 @@
                 android:layout_height="200dp"
                 android:scaleType="centerInside"
                 android:contentDescription="imgagenda"
-                android:src="@drawable/enamorado"
+                android:src="@drawable/banana"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="16dp"
                 android:clickable="true"
@@ -93,7 +113,7 @@
                 android:layout_height="200dp"
                 android:scaleType="centerInside"
                 android:contentDescription="imgcolores"
-                android:src="@drawable/entusiasmado"
+                android:src="@drawable/fresa2"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="16dp"
                 android:clickable="true"
